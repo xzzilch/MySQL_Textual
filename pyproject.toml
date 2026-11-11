@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sqltui"
+version = "0.1.0"
+description = "A local-first terminal interface for MySQL"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "textual>=1.0,<2.0",
+  "mysql-connector-python>=9.0,<10.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0", "pytest-asyncio>=0.24", "ruff>=0.11"]
+build = ["pyinstaller>=6.10", "pillow>=10.4"]
+
+[project.scripts]
+sqltui = "sqltui.app:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/sqltui"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"

@@ -1,0 +1,302 @@
+Screen {
+    background: #141a1c;
+    color: #dce5e3;
+}
+
+Header, Footer {
+    background: #202729;
+    color: #cbd6d3;
+}
+
+Header {
+    border-bottom: solid #3b4848;
+}
+
+Footer {
+    border-top: solid #3b4848;
+}
+
+Label {
+    color: #aab8b5;
+}
+
+Input, Select {
+    background: #1b2325;
+    color: #dce5e3;
+    border: tall #3a4748;
+}
+
+Input:focus, Select:focus {
+    border: tall #59a99b;
+}
+
+Button {
+    min-width: 12;
+    height: 3;
+    margin-right: 1;
+    border: none;
+    background: #293335;
+    color: #dce5e3;
+}
+
+Button:hover {
+    background: #354244;
+}
+
+Button:focus {
+    text-style: bold;
+    background: #344542;
+}
+
+Button.-primary {
+    background: #28665d;
+    color: #f1f7f5;
+    text-style: bold;
+}
+
+Button.-primary:hover {
+    background: #347d71;
+}
+
+Button:disabled {
+    background: #222a2c;
+    color: #697674;
+}
+
+#root, #main-screen, #main-shell {
+    width: 1fr;
+    height: 1fr;
+}
+
+#main-shell {
+    padding: 0 1;
+}
+
+#connection-bar {
+    height: 4;
+    align: left middle;
+    border-bottom: solid #3b4848;
+    padding: 0 1;
+}
+
+#connection-label {
+    width: 1fr;
+    color: #b8c8c4;
+    text-style: bold;
+}
+
+TabbedContent {
+    height: 1fr;
+    background: #141a1c;
+}
+
+Tabs {
+    background: #202729;
+    color: #9eadaa;
+}
+
+Tab {
+    background: #202729;
+    color: #9eadaa;
+}
+
+Tab.-active {
+    background: #141a1c;
+    color: #e1ece8;
+    text-style: bold;
+}
+
+Underline {
+    background: #59a99b;
+}
+
+TabPane {
+    padding: 1 1;
+    background: #141a1c;
+}
+
+.section-title {
+    text-style: bold;
+    color: #d6bd7e;
+    margin-bottom: 1;
+}
+
+#overview-heading {
+    height: 3;
+    align: left middle;
+    border-bottom: solid #354142;
+}
+
+#overview-heading .section-title {
+    width: 1fr;
+    margin-bottom: 0;
+}
+
+#session-state {
+    width: auto;
+    color: #75c4a8;
+    text-style: bold;
+    padding: 0 1;
+    border: solid #315a4e;
+    background: #1c302a;
+}
+
+.toolbar {
+    height: 3;
+    align: left middle;
+    margin-bottom: 1;
+}
+
+.toolbar Label {
+    margin-right: 1;
+    color: #9eadaa;
+}
+
+.toolbar Select {
+    width: 34;
+    margin-right: 1;
+}
+
+#catalog-body {
+    height: 1fr;
+    min-height: 10;
+}
+
+#tables {
+    width: 1fr;
+}
+
+#table-inspector {
+    width: 1fr;
+    border-left: solid #3b4848;
+    padding: 0 1;
+    background: #171e20;
+}
+
+#table-details, #overview-hint {
+    padding: 1;
+    color: #c0cdca;
+}
+
+#overview-hint {
+    padding-left: 0;
+    color: #8f9d9a;
+}
+
+#session-details {
+    height: auto;
+    max-height: 12;
+    margin-top: 1;
+}
+
+#session-summary {
+    margin-top: 1;
+    padding: 0 1;
+    color: #d6bd7e;
+    border-left: solid #59a99b;
+    background: #202729;
+}
+
+#catalog-results, #query-results {
+    height: 1fr;
+    min-height: 7;
+    margin-top: 1;
+}
+
+DataTable {
+    background: #171e20;
+    color: #d0dad7;
+    border: solid #354142;
+}
+
+DataTable > .datatable--header {
+    background: #273133;
+    color: #dce5e3;
+    text-style: bold;
+}
+
+DataTable > .datatable--cursor {
+    background: #28584f;
+    color: #f2f7f5;
+    text-style: bold;
+}
+
+DataTable > .datatable--hover {
+    background: #222d2f;
+}
+
+#query-editor {
+    height: 1fr;
+    min-height: 8;
+    border: solid #354445;
+    background: #171e20;
+    color: #dce5e3;
+    padding: 0 1;
+}
+
+#query-editor:focus {
+    border: tall #59a99b;
+}
+
+#query-editor .text-area--gutter {
+    background: #202729;
+    color: #81908d;
+}
+
+#query-editor .text-area--cursor {
+    background: #347d71;
+    color: #f5f8f6;
+}
+
+.status-line {
+    height: 2;
+    color: #d6bd7e;
+    padding: 0 1;
+    background: #202729;
+    border-left: solid #b79655;
+}
+
+#auth-dialog {
+    width: 70;
+    max-width: 90%;
+    height: 95%;
+    max-height: 95%;
+    padding: 1 2;
+    border: solid #596967;
+    background: #1b2325;
+    align: center middle;
+}
+
+#auth-fields {
+    height: 1fr;
+    min-height: 5;
+}
+
+#auth-title {
+    text-style: bold;
+    color: #e0c77f;
+    margin-bottom: 1;
+}
+
+#auth-dialog Label {
+    color: #aebbb8;
+}
+
+#auth-dialog Input, #auth-dialog Select {
+    width: 1fr;
+    margin-bottom: 1;
+}
+
+#login-error {
+    color: #e58b7e;
+    height: auto;
+    margin: 1 0;
+    background: #2a2020;
+    padding: 0 1;
+}
+
+.actions {
+    height: 3;
+    align: right middle;
+    border-top: solid #3b4848;
+}
