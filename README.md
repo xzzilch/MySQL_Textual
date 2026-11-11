@@ -40,27 +40,58 @@ Query execution intentionally permits arbitrary SQL because this is a management
 - MySQL 8.0 or newer (local or reachable server)
 - A MySQL user with access to the databases you want to manage
 
-Install from this repository root:
+SQLTUI is the client application; it does not install or start a MySQL server. If you already have a MySQL-compatible server, you only need its host, port, username, and password. Install MySQL separately if needed.
+
+## Install and Run From Source
+
+First install Git and Python 3.12 or newer, then clone the project:
 
 ```sh
+git clone https://github.com/xzzilch/MySQL_Textual.git
+cd MySQL_Textual
+```
+
+### CachyOS / Linux
+
+```sh
+sudo pacman -S python python-pip git
 python -m venv .venv
 . .venv/bin/activate
-python -m pip install -e '.[test]'
-```
-
-Launch with:
-
-```sh
+python -m pip install .
 sqltui
-# or
-python -m sqltui
 ```
 
-The first screen prompts for a MySQL host, port, username, password, and optional database. No connection secrets are read from environment variables or saved by the application. The default local endpoint is `127.0.0.1:3306`.
+### Windows 10/11
+
+Install Python 3.12+ and Git, then run these commands in PowerShell:
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install .
+.\.venv\Scripts\sqltui.exe
+```
+
+No activation policy change is required. The connection screen prompts for a MySQL host, port, username, password, and optional database. No connection secrets are read from environment variables or saved by the application. The default local endpoint is `127.0.0.1:3306`.
 
 ## Native Packages
 
 SQLTUI remains a terminal application: its native app-menu/Start Menu shortcut opens the interactive TUI in a terminal window. The packaged folder contains Python and connector dependencies, so Python does not need to be installed on the target machine. Build on each target OS separately; PyInstaller does not cross-compile Windows and Linux bundles.
+
+### Install a Prebuilt App
+
+1. Open the repository's **Actions** tab on GitHub.
+2. Select **Build SQLTUI packages**, choose **Run workflow**, and wait for it to finish successfully.
+3. Open that completed run and download the artifact for your operating system.
+
+On CachyOS/Linux, extract `sqltui-linux-cachyos` while preserving its folders, open the extracted root (the one containing `dist/` and `packaging/`), and run:
+
+```sh
+bash packaging/linux/install.sh
+```
+
+Launch SQLTUI from the desktop application menu or run `~/.local/bin/sqltui` in a terminal. The Linux artifact includes the executable and desktop icon.
+
+On Windows, extract `sqltui-windows-x64` and run `SQLTUI-Setup-x64.exe`. Follow the installer; SQLTUI will be available from the Start Menu, with an optional desktop shortcut. Windows may show a SmartScreen warning because the installer is not code-signed. The app opens in a terminal window; it is not a traditional graphical SQL client.
 
 ### CachyOS / Linux
 
@@ -80,11 +111,11 @@ Build on a 64-bit Windows machine using PowerShell:
 
 ```powershell
 py -3.12 -m venv .venv
-.venv\Scripts\python -m pip install -e ".[build]"
-.venv\Scripts\python packaging\build.py
+.\.venv\Scripts\python.exe -m pip install -e ".[build]"
+.\.venv\Scripts\python.exe packaging\build.py
 ```
 
-Install Inno Setup 6, then run `packaging\windows\build-installer.ps1` in PowerShell. The installer will be created as `dist\installer\SQLTUI-Setup-x64.exe`; it installs SQLTUI with Start Menu and optional desktop shortcuts. It launches as a console TUI, not a graphical window.
+Install Inno Setup 6, then run `.\packaging\windows\build-installer.ps1` from the repository root in PowerShell. The installer will be created as `dist\installer\SQLTUI-Setup-x64.exe`; it installs SQLTUI with Start Menu and optional desktop shortcuts. It launches as a console TUI, not a graphical window.
 
 The Linux and Windows build artifacts must each be built on their own operating system. Only the CachyOS bundle can be built and tested from Linux; the Windows installer recipe is provided but requires Windows and Inno Setup to produce and verify.
 
